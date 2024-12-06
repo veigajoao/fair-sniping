@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.25;
+pragma solidity ^0.8.26;
 
 interface INonfungiblePositionManager {
     struct MintParams {
@@ -94,4 +94,27 @@ interface ISwapRouter {
     function exactInputSingle(
         ExactInputSingleParams calldata params
     ) external payable returns (uint256 amountOut);
+}
+
+interface IMultiLpLocker {
+   struct LpLock {
+        // token address of locked token
+        address token;
+        // address of liquidity pool
+        address pool;
+        // array of token ids from NFT position manager
+        uint256[] tokenIds;
+        // duration of lock
+        uint256 duration;
+        // user key
+        address positionOwner;
+    }
+
+    function lock(LpLock memory _lock) external;
+    function release(address _token) external;
+    function withdrawERC20(address _token) external;
+    function withdrawEth() external;
+    function collectFees(address _token) external;
+    function claimUserRewards(bytes32 _key, address _token, address _recipient) external;
+
 }
