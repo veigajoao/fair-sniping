@@ -29,7 +29,7 @@ contract FairSnipeTest is Test {
     address public alice;
     address public bob;
 
-    uint24 public constant POOL_FEE = 3000;
+    uint24 public constant POOL_FEE = 10000;
 
     function setUp() public {
         vm.createSelectFork(BASE_RPC_URL, FORK_BLOCK);
@@ -72,8 +72,8 @@ contract FairSnipeTest is Test {
             token0: address(token),
             token1: WETH,
             fee: POOL_FEE,
-            tickLower: -887220, // Price range ~0.5 to ~2
-            tickUpper: 887220,
+            tickLower: -887200, // Price range ~0.5 to ~2
+            tickUpper: 887200,
             amount0Desired: 500_000 * 10 ** 18,
             amount1Desired: 0,
             amount0Min: 0,

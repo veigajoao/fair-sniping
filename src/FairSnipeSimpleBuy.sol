@@ -38,7 +38,6 @@ contract FairSnipeSimpleBuy {
         int24 initialTick;
         uint256 launchTimestamp;
         INonfungiblePositionManager.MintParams[] launchParams;
-        // SnipeCondition snipeCondition;
         uint256 amountOut;
         bool executed;
     }
@@ -47,11 +46,6 @@ contract FairSnipeSimpleBuy {
         uint256 wethAmount;
         bool withdrawn;
     }
-
-    // struct SnipeCondition {
-    //     INonfungiblePositionManager.MintParams mintParams;
-    //     uint256 maxLockedTime;
-    // }
 
     constructor(
         address _uniswapV3Factory,
